@@ -1,8 +1,8 @@
-package jfitness.basal.metabolic.rate;
+package jfitness.basal.metabolic.rate.formula;
 
 /**
  *
- * @author SaulWorkStation
+ * @author Saúl Rodríguez Naranjo
  * @param <ActivityLevelT>
  */
 public interface BMRFormula<ActivityLevelT extends Enum<ActivityLevelT>> {

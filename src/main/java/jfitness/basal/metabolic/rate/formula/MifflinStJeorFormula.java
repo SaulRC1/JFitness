@@ -1,4 +1,4 @@
-package jfitness.basal.metabolic.rate;
+package jfitness.basal.metabolic.rate.formula;
 
 /**
  *
