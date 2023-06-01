@@ -1,5 +1,9 @@
 package jfitness.basal.metabolic.rate.formula;
 
+import jfitness.basal.metabolic.rate.BasalMetabolicRate;
+import jfitness.person.fitness.data.PersonFitnessData;
+import jfitness.person.fitness.data.PersonSex;
+
 /**
  * This interface represents an equation that calculates an individual's basal
  * metabolic rate (BMR).
@@ -30,4 +34,11 @@ package jfitness.basal.metabolic.rate.formula;
  */
 public interface BMRFormula<ActivityLevelT extends Enum<ActivityLevelT>> {
     
+    public BasalMetabolicRate<ActivityLevelT> calculateBasalMetabolicRate(PersonFitnessData personFitnessData);
+    
+    public double calculateTotalCalorieExpenditurePerDay(PersonFitnessData personFitnessData, ActivityLevelT activityLevel);
+    
+    public double calculateTotalCalorieExpenditurePerDay(BasalMetabolicRate<ActivityLevelT> basalMetabolicRate, ActivityLevelT activityLevel);
+    
+    public String getFormulaName();
 }
