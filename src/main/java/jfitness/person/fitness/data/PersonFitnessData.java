@@ -6,7 +6,6 @@ package jfitness.person.fitness.data;
  */
 public interface PersonFitnessData
 {
-
     public double getBodyWeight();
 
     public double getHeight();
@@ -15,7 +14,7 @@ public interface PersonFitnessData
 
     public double getHeightImperialSystem();
 
-    public PersonSex getPersonSex();
+    public BiologicalSex getPersonSex();
 
     public int getAge();
 

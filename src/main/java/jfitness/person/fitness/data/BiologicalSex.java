@@ -1,7 +1,7 @@
 package jfitness.person.fitness.data;
 
 /**
- * This enum represents a person's sex, either male or female.
+ * This enum represents a person's biological sex, either male or female.
  *
  * <p>
  * An individual's sex is necessary to perform a calculation of its basal
@@ -13,7 +13,7 @@ package jfitness.person.fitness.data;
  * @see jfitness.basal.metabolic.rate.formula.BMRFormula
  * @see jfitness.basal.metabolic.rate.BasalMetabolicRate
  */
-public enum PersonSex
+public enum BiologicalSex
 {
     MAN,
     WOMAN
