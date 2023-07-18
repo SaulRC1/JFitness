@@ -2,7 +2,6 @@ package jfitness.basal.metabolic.rate.formula;
 
 import jfitness.basal.metabolic.rate.BasalMetabolicRate;
 import jfitness.person.fitness.data.PersonFitnessData;
-import jfitness.person.fitness.data.PersonSex;
 
 /**
  * This interface represents an equation that calculates an individual's basal
