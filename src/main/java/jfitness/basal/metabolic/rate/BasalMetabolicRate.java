@@ -42,6 +42,9 @@ package jfitness.basal.metabolic.rate;
  * 
  * @see jfitness.basal.metabolic.rate.formula.BMRFormula
  */
-public interface BasalMetabolicRate<ActivityLevelT extends Enum<ActivityLevelT>> {
+public interface BasalMetabolicRate<ActivityLevelT extends Enum<ActivityLevelT>> 
+{
+    public double getTotalCalorieExpenditurePerDay(ActivityLevelT activityLevel);
     
+    public double getBasalMetabolicRateValue();
 }

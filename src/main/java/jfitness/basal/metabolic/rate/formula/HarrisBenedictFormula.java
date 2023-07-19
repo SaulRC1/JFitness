@@ -1,7 +1,9 @@
 package jfitness.basal.metabolic.rate.formula;
 
 import jfitness.basal.metabolic.rate.BasalMetabolicRate;
+import jfitness.basal.metabolic.rate.BasalMetabolicRateHarrisBenedict;
 import jfitness.basal.metabolic.rate.activity.level.HarrisBenedictActivityLevel;
+import jfitness.person.fitness.data.BiologicalSex;
 import jfitness.person.fitness.data.PersonFitnessData;
 
 /**
@@ -70,29 +72,53 @@ public class HarrisBenedictFormula implements BMRFormula<HarrisBenedictActivityL
     @Override
     public BasalMetabolicRate<HarrisBenedictActivityLevel> calculateBasalMetabolicRate(PersonFitnessData personFitnessData)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        BasalMetabolicRate<HarrisBenedictActivityLevel> basalMetabolicRate = null;
+
+        //must be the weight expressed in kilograms
+        double weight = personFitnessData.getBodyWeight();
+
+        //must be the height expressed in centimeters
+        double height = personFitnessData.getHeight();
+
+        //must be the age expressed in years
+        int age = personFitnessData.getAge();
+        
+        double basalMetabolicRateValue = 0;
+
+        if (personFitnessData.getBiologicalSex() == BiologicalSex.MAN)
+        {
+            basalMetabolicRateValue = (13.7516 * weight) + (5.0033 * height)
+                    - (6.755 * age) + 66.473;
+        }
+        else if (personFitnessData.getBiologicalSex() == BiologicalSex.WOMAN)
+        {
+            basalMetabolicRateValue = (9.5634 * weight) + (1.8496 * height) 
+                    - (4.6756 * age) + 655.0955;
+        }
+        
+        basalMetabolicRate = new BasalMetabolicRateHarrisBenedict(basalMetabolicRateValue);
+        
+        return basalMetabolicRate;
     }
 
     @Override
     public double calculateTotalCalorieExpenditurePerDay(PersonFitnessData personFitnessData, HarrisBenedictActivityLevel activityLevel)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        BasalMetabolicRate<HarrisBenedictActivityLevel> basalMetabolicRate 
+                = this.calculateBasalMetabolicRate(personFitnessData);
+        
+        return basalMetabolicRate.getTotalCalorieExpenditurePerDay(activityLevel);
     }
 
     @Override
     public double calculateTotalCalorieExpenditurePerDay(BasalMetabolicRate<HarrisBenedictActivityLevel> basalMetabolicRate, HarrisBenedictActivityLevel activityLevel)
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return basalMetabolicRate.getTotalCalorieExpenditurePerDay(activityLevel);
     }
 
     @Override
     public String getFormulaName()
     {
         return FORMULA_NAME;
-    }
-
-    private BasalMetabolicRate<HarrisBenedictActivityLevel> calculateBasalMetabolicRateMan(PersonFitnessData personFitnessData)
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

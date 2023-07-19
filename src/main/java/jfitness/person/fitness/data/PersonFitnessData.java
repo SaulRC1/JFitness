@@ -14,7 +14,7 @@ public interface PersonFitnessData
 
     public double getHeightImperialSystem();
 
-    public BiologicalSex getPersonSex();
+    public BiologicalSex getBiologicalSex();
 
     public int getAge();
 

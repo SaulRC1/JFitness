@@ -8,4 +8,16 @@ import jfitness.basal.metabolic.rate.activity.level.KatchMcardleActivityLevel;
  */
 public class BasalMetabolicRateKatchMcardle implements BasalMetabolicRate<KatchMcardleActivityLevel>{
 
+    @Override
+    public double getTotalCalorieExpenditurePerDay(KatchMcardleActivityLevel activityLevel)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public double getBasalMetabolicRateValue()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
