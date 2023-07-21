@@ -37,10 +37,13 @@ public interface BMRFormula<ActivityLevelT extends Enum<ActivityLevelT>>
 
     /**
      * This method will calculate the basal metabolic rate based on a person
-     * fitness parameters delimited by {@link PersonFitnessData} interface.
+     * fitness parameters.
      *
      * @param personFitnessData The person fitness parameters.
      * @return The basal metabolic rate.
+     *
+     * @see BasalMetabolicRate
+     * @see PersonFitnessData
      */
     public BasalMetabolicRate<ActivityLevelT> calculateBasalMetabolicRate(PersonFitnessData personFitnessData);
 
@@ -56,6 +59,8 @@ public interface BMRFormula<ActivityLevelT extends Enum<ActivityLevelT>>
      * @param personFitnessData The person fitness parameters.
      * @param activityLevel An activity level compatible with this formula.
      * @return Total calorie expenditure per day in kilocalories.
+     *
+     * @see PersonFitnessData
      */
     public double calculateTotalCalorieExpenditurePerDay(PersonFitnessData personFitnessData,
             ActivityLevelT activityLevel);
@@ -66,15 +71,19 @@ public interface BMRFormula<ActivityLevelT extends Enum<ActivityLevelT>>
      *
      * <p>
      * The calculation will be done using a previously calculated basal
-     * metabolic rate that has been calculated with a compatible activity level
-     * and an activity level compatible with this formula.
+     * metabolic rate. Said basal metabolic rate must have been calculated with
+     * this exact same formula, or a compatible one that uses the same activity
+     * level.
      * </p>
      *
      * @param basalMetabolicRate A basal metabolic rate compatible with this
      * formula's activity level.
      *
      * @param activityLevel An activity level compatible with this formula.
+     * 
      * @return Total calorie expenditure per day in kilocalories.
+     *
+     * @see BasalMetabolicRate
      */
     public double calculateTotalCalorieExpenditurePerDay(BasalMetabolicRate<ActivityLevelT> basalMetabolicRate,
             ActivityLevelT activityLevel);

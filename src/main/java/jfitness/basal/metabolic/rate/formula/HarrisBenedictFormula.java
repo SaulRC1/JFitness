@@ -55,6 +55,22 @@ import jfitness.person.fitness.data.PersonFitnessData;
  * (4.6756 * age in years) + 655.0955</code>
  * </p>
  *
+ * <p>
+ * A common issue with this formula is that the calculation of the basal
+ * metabolic rate does not take into account body composition, producing similar
+ * results for a very muscular person and an overweight person who both share
+ * the same age, height, age, weight and gender. Since muscle and fat require
+ * different amount of calories to maintain, this formula will not be precise
+ * for such cases.
+ * </p>
+ *
+ * <p>
+ * The paper behind the last update of this formula (Mifflin et al), states that
+ * all participants in the study are within the 'normal' and 'overweight' body 
+ * mass index (BMI) categories. Hence the results do not necessarily apply to those
+ * who fall in the 'obese' or 'underweight' BMI categories.
+ * </p>
+ *
  * @author Saúl Rodríguez Naranjo
  * @see BMRFormula
  * @see RozaShizgalFormula
@@ -64,6 +80,7 @@ import jfitness.person.fitness.data.PersonFitnessData;
  */
 public class HarrisBenedictFormula implements BMRFormula<HarrisBenedictActivityLevel>
 {
+
     /**
      * The name of this formula.
      */
@@ -82,7 +99,7 @@ public class HarrisBenedictFormula implements BMRFormula<HarrisBenedictActivityL
 
         //must be the age expressed in years
         int age = personFitnessData.getAge();
-        
+
         double basalMetabolicRateValue = 0;
 
         if (personFitnessData.getBiologicalSex() == BiologicalSex.MAN)
@@ -92,21 +109,21 @@ public class HarrisBenedictFormula implements BMRFormula<HarrisBenedictActivityL
         }
         else if (personFitnessData.getBiologicalSex() == BiologicalSex.WOMAN)
         {
-            basalMetabolicRateValue = (9.5634 * weight) + (1.8496 * height) 
+            basalMetabolicRateValue = (9.5634 * weight) + (1.8496 * height)
                     - (4.6756 * age) + 655.0955;
         }
-        
+
         basalMetabolicRate = new BasalMetabolicRateHarrisBenedict(basalMetabolicRateValue);
-        
+
         return basalMetabolicRate;
     }
 
     @Override
     public double calculateTotalCalorieExpenditurePerDay(PersonFitnessData personFitnessData, HarrisBenedictActivityLevel activityLevel)
     {
-        BasalMetabolicRate<HarrisBenedictActivityLevel> basalMetabolicRate 
+        BasalMetabolicRate<HarrisBenedictActivityLevel> basalMetabolicRate
                 = this.calculateBasalMetabolicRate(personFitnessData);
-        
+
         return basalMetabolicRate.getTotalCalorieExpenditurePerDay(activityLevel);
     }
 
