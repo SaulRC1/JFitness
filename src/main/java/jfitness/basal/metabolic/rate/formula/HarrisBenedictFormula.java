@@ -92,7 +92,7 @@ public class HarrisBenedictFormula implements BMRFormula<HarrisBenedictActivityL
         BasalMetabolicRate<HarrisBenedictActivityLevel> basalMetabolicRate = null;
 
         //must be the weight expressed in kilograms
-        double weight = personFitnessData.getBodyWeight();
+        double weight = personFitnessData.getWeight();
 
         //must be the height expressed in centimeters
         double height = personFitnessData.getHeight();
