@@ -1,1 +1,9 @@
 nb-configuration.xml
+
+target/
+
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+documentation/UML Diagrams/JFitness 1.0.vpp.*
+documentation/UML Diagrams/.JFitness 1.0.vpp.lck
