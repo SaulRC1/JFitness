@@ -17,6 +17,10 @@ public class PersonFitnessData
 
     //Age must be measured in years
     private int age;
+    
+    private BodyComposition bodyComposition;
+    
+    private BodyMassIndex bodyMassIndex;
 
     /**
      * Returns this person's weight in kilograms.

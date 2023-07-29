@@ -14,18 +14,18 @@ public class KatchMcardleFormula implements BMRFormula<KatchMcardleActivityLevel
     /**
      * The name of this formula.
      */
-    public static final String FORMULA_NAME = "Katch-Mcardle Equation";
+    public static final String FORMULA_NAME = "Katch-Mcardle Equation 1975";
 
     @Override
     public BasalMetabolicRate<KatchMcardleActivityLevel> calculateBasalMetabolicRate(PersonFitnessData personFitnessData)
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public double calculateTotalCalorieExpenditurePerDay(PersonFitnessData personFitnessData, KatchMcardleActivityLevel activityLevel)
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -37,7 +37,7 @@ public class KatchMcardleFormula implements BMRFormula<KatchMcardleActivityLevel
     @Override
     public String getFormulaName()
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return FORMULA_NAME;
     }
 
 }
