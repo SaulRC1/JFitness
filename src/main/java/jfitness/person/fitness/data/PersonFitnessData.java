@@ -1,5 +1,7 @@
 package jfitness.person.fitness.data;
 
+import jfitness.body.mass.index.BodyMassIndex;
+
 /**
  *
  * @author Saúl Rodríguez Naranjo
