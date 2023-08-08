@@ -21,19 +21,26 @@ package jfitness.body.mass.index.category;
 public enum SingaporeBMICategory
 {
     /**
-     *
+     * This category corresponds to a body mass index value lesser than 18.5
+     * kg/m^2 (kilogram/square meter)
      */
     UNDERWEIGHT("Underweight"),
+    
     /**
-     *
+     * This category corresponds to a body mass index value between 18.5
+     * (included) and 22.9 (included) kg/m^2 (kilogram/square meter)
      */
     NORMAL("Normal"),
+    
     /**
-     *
+     * This category corresponds to a body mass index value between 23
+     * (included) and 27.4 (included) kg/m^2 (kilogram/square meter)
      */
     MILD_TO_MODERATE_OVERWEIGHT("Mild to moderate overweight"),
+    
     /**
-     *
+     * This category corresponds to a body mass index value equal or greater
+     * than 27.5 kg/m^2 (kilogram/square meter)
      */
     VERY_OVERWEIGHT_TO_OBESE("Very overweight to obese");
 
