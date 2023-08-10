@@ -4,7 +4,6 @@ import jfitness.basal.metabolic.rate.BasalMetabolicRate;
 import jfitness.basal.metabolic.rate.BasalMetabolicRateHarrisBenedict;
 import jfitness.basal.metabolic.rate.activity.level.HarrisBenedictActivityLevel;
 import jfitness.person.fitness.data.BiologicalSex;
-import jfitness.person.fitness.data.PersonFitnessData;
 
 /**
  *
@@ -17,35 +16,59 @@ public class RozaShizgalFormula implements BMRFormula<HarrisBenedictActivityLeve
      * The name of this formula.
      */
     public static final String FORMULA_NAME = "Roza-Shizgal Equation 1984";
+
+    private double weight;
+    private double height;
+    private int age;
+    private BiologicalSex biologicalSex;
+
+    /**
+     * Builds the Roza-Shizgal formula with the following data related to a
+     * person:
+     * 
+     * <ul>
+     *  <li>Weight: The person's weight expressed in kilograms.</li>
+     *  <li>Height: The person's height expressed in centimeters.</li>
+     *  <li>Age: The person's age expressed in years.</li>
+     *  <li>Biological Sex: The person's biological sex, either man or woman.</li>
+     * </ul>
+     *
+     * @param weight The person's weight expressed in kilograms.
+     * @param height The person's height expressed in centimeters.
+     * @param age The person's age expressed in years.
+     * @param biologicalSex The person's biological sex.
+     */
+    public RozaShizgalFormula(double weight, double height, int age, BiologicalSex biologicalSex)
+    {
+        this.weight = weight;
+        this.height = height;
+        this.age = age;
+        this.biologicalSex = biologicalSex;
+    }
     
     @Override
-    public BasalMetabolicRate<HarrisBenedictActivityLevel> calculateBasalMetabolicRate(PersonFitnessData personFitnessData)
+    public BasalMetabolicRate<HarrisBenedictActivityLevel> calculateBasalMetabolicRate()
     {
-        double weight = personFitnessData.getWeight();
-        double height = personFitnessData.getHeight();
-        int age = personFitnessData.getAge();
-        BiologicalSex biologicalSex = personFitnessData.getBiologicalSex();
-        
         double basalMetabolicRateValue = 0;
-        
-        if(biologicalSex == BiologicalSex.MAN)
+
+        if (biologicalSex == BiologicalSex.MAN)
         {
             basalMetabolicRateValue = (13.397 * weight) + (4.799 * height) - (5.677 * age) + 88.362;
-        }
-        else if(biologicalSex == BiologicalSex.WOMAN)
+        } 
+        else if (biologicalSex == BiologicalSex.WOMAN)
         {
             basalMetabolicRateValue = (9.247 * weight) + (3.098 * height) - (4.33 * age) + 447.593;
         }
-        
+
         return new BasalMetabolicRateHarrisBenedict(basalMetabolicRateValue);
     }
 
     @Override
-    public double calculateTotalCalorieExpenditurePerDay(PersonFitnessData personFitnessData, HarrisBenedictActivityLevel activityLevel)
+    public double calculateTotalCalorieExpenditurePerDay(HarrisBenedictActivityLevel activityLevel)
     {
-        BasalMetabolicRate<HarrisBenedictActivityLevel> basalMetabolicRate =
-                this.calculateBasalMetabolicRate(personFitnessData);
-        
+        BasalMetabolicRate<HarrisBenedictActivityLevel> basalMetabolicRate
+                = this.calculateBasalMetabolicRate();
+
         return basalMetabolicRate.getTotalCalorieExpenditurePerDay(activityLevel);
     }
 
@@ -59,6 +82,105 @@ public class RozaShizgalFormula implements BMRFormula<HarrisBenedictActivityLeve
     public String getFormulaName()
     {
         return FORMULA_NAME;
+    }
+
+    /**
+     * Returns the person's weight in kilograms that the formula is currently
+     * using for calculations.
+     * 
+     * @return The currently used person's weight in kilograms.
+     */
+    public double getWeight()
+    {
+        return weight;
+    }
+
+    /**
+     * Will set the person's weight that the formula will use for calculations.
+     * 
+     * <p>
+     * Weight must be set in kilograms.
+     * </p>
+     * 
+     * @param weight The person's weight in kilograms.
+     */
+    public void setWeight(double weight)
+    {
+        this.weight = weight;
+    }
+
+    /**
+     * Will return the person's height in centimeters that the formula is 
+     * currently using for calculations.
+     * 
+     * @return The currently used person's height in centimeters.
+     */
+    public double getHeight()
+    {
+        return height;
+    }
+
+    /**
+     * Will set the person's height that the formula will use for calculations.
+     * 
+     * <p>
+     * Height must be set in centimeters.
+     * </p>
+     * 
+     * @param height The person's height in centimeters.
+     */
+    public void setHeight(double height)
+    {
+        this.height = height;
+    }
+
+    /**
+     * Will return the person's age in years that the formula is currently using 
+     * for calculations.
+     * 
+     * @return The currently used person's age in years.
+     */
+    public int getAge()
+    {
+        return age;
+    }
+
+    /**
+     * Will set the person's age that the formula will use for calculations.
+     * 
+     * <p>
+     * Age must be set in years.
+     * </p>
+     * 
+     * @param age The person's age in years.
+     */
+    public void setAge(int age)
+    {
+        this.age = age;
+    }
+
+    /**
+     * Will return the person's biological sex that the formula is currently using 
+     * for calculations.
+     * 
+     * @return The currently used person's biological sex.
+     * @see BiologicalSex
+     */
+    public BiologicalSex getBiologicalSex()
+    {
+        return biologicalSex;
+    }
+
+    /**
+     * Will set the person's biological sex that the formula will use for 
+     * calculations.
+     * 
+     * @param biologicalSex The person's biological sex.
+     * @see BiologicalSex
+     */
+    public void setBiologicalSex(BiologicalSex biologicalSex)
+    {
+        this.biologicalSex = biologicalSex;
     }
 
 }

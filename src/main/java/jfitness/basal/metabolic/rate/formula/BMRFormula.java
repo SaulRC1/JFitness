@@ -39,31 +39,20 @@ public interface BMRFormula<ActivityLevelT extends Enum<ActivityLevelT>>
      * This method will calculate the basal metabolic rate based on a person
      * fitness parameters.
      *
-     * @param personFitnessData The person fitness parameters.
      * @return The basal metabolic rate.
      *
      * @see BasalMetabolicRate
-     * @see PersonFitnessData
      */
-    public BasalMetabolicRate<ActivityLevelT> calculateBasalMetabolicRate(PersonFitnessData personFitnessData);
+    public BasalMetabolicRate<ActivityLevelT> calculateBasalMetabolicRate();
 
     /**
      * This method will calculate the total calorie expenditure per day in Kcal
      * (kilocalories).
      *
-     * <p>
-     * The calculation will be done using the person fitness parameters and an
-     * activity level compatible with this formula.
-     * </p>
-     *
-     * @param personFitnessData The person fitness parameters.
      * @param activityLevel An activity level compatible with this formula.
      * @return Total calorie expenditure per day in kilocalories.
-     *
-     * @see PersonFitnessData
      */
-    public double calculateTotalCalorieExpenditurePerDay(PersonFitnessData personFitnessData,
-            ActivityLevelT activityLevel);
+    public double calculateTotalCalorieExpenditurePerDay(ActivityLevelT activityLevel);
 
     /**
      * This method will calculate the total calorie expenditure per day in Kcal
@@ -80,7 +69,7 @@ public interface BMRFormula<ActivityLevelT extends Enum<ActivityLevelT>>
      * formula's activity level.
      *
      * @param activityLevel An activity level compatible with this formula.
-     * 
+     *
      * @return Total calorie expenditure per day in kilocalories.
      *
      * @see BasalMetabolicRate

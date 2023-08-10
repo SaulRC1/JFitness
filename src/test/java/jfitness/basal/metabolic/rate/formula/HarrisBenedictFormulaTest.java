@@ -17,28 +17,32 @@ import org.junit.jupiter.api.Test;
 public class HarrisBenedictFormulaTest
 {
 
-    private PersonFitnessData testFitnessDataMale;
-    private PersonFitnessData testFitnessDataFemale;
-
+    private double weightMaleSubject;
+    private double heightMaleSubject;
+    private int ageMaleSubject;
+    private BiologicalSex biologicalSexMaleSubject;
+    
+    private double weightFemaleSubject;
+    private double heightFemaleSubject;
+    private int ageFemaleSubject;
+    private BiologicalSex biologicalSexFemaleSubject;
+    
     @BeforeEach
     public void initializeTestParameters()
     {
         Logger.getLogger(HarrisBenedictFormulaTest.class.getName()).log(Level.INFO, 
                 "Initializing test parameters...");
         
-        testFitnessDataMale = new PersonFitnessData();
-
-        testFitnessDataMale.setAge(20);
-        testFitnessDataMale.setHeight(175);
-        testFitnessDataMale.setWeight(70);
-        testFitnessDataMale.setBiologicalSex(BiologicalSex.MAN);
-
-        testFitnessDataFemale = new PersonFitnessData();
-
-        testFitnessDataFemale.setAge(20);
-        testFitnessDataFemale.setHeight(165);
-        testFitnessDataFemale.setWeight(60);
-        testFitnessDataFemale.setBiologicalSex(BiologicalSex.WOMAN);
+        
+        weightMaleSubject = 70;
+        heightMaleSubject = 175;
+        ageMaleSubject = 20;
+        biologicalSexMaleSubject = BiologicalSex.MAN;
+        
+        weightFemaleSubject = 60;
+        heightFemaleSubject = 165;
+        ageFemaleSubject = 20;
+        biologicalSexFemaleSubject = BiologicalSex.WOMAN;
     }
 
     /**
@@ -53,9 +57,9 @@ public class HarrisBenedictFormulaTest
         BasalMetabolicRate<HarrisBenedictActivityLevel> calculatedBasalMetabolicRate;
 
         BMRFormula<HarrisBenedictActivityLevel> harrisBenedictFormula
-                = new HarrisBenedictFormula();
+                = new HarrisBenedictFormula(weightMaleSubject, heightMaleSubject, ageMaleSubject, biologicalSexMaleSubject);
 
-        calculatedBasalMetabolicRate = harrisBenedictFormula.calculateBasalMetabolicRate(testFitnessDataMale);
+        calculatedBasalMetabolicRate = harrisBenedictFormula.calculateBasalMetabolicRate();
         
         Assertions.assertEquals(expectedBasalMetabolicRate, calculatedBasalMetabolicRate.getBasalMetabolicRateValue());
     }

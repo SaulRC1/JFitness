@@ -2,7 +2,6 @@ package jfitness.basal.metabolic.rate.formula;
 
 import jfitness.basal.metabolic.rate.BasalMetabolicRate;
 import jfitness.basal.metabolic.rate.activity.level.KatchMcardleActivityLevel;
-import jfitness.person.fitness.data.PersonFitnessData;
 
 /**
  *
@@ -17,18 +16,6 @@ public class KatchMcardleFormula implements BMRFormula<KatchMcardleActivityLevel
     public static final String FORMULA_NAME = "Katch-Mcardle Equation 1975";
 
     @Override
-    public BasalMetabolicRate<KatchMcardleActivityLevel> calculateBasalMetabolicRate(PersonFitnessData personFitnessData)
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public double calculateTotalCalorieExpenditurePerDay(PersonFitnessData personFitnessData, KatchMcardleActivityLevel activityLevel)
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public double calculateTotalCalorieExpenditurePerDay(BasalMetabolicRate<KatchMcardleActivityLevel> basalMetabolicRate, KatchMcardleActivityLevel activityLevel)
     {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -38,6 +25,18 @@ public class KatchMcardleFormula implements BMRFormula<KatchMcardleActivityLevel
     public String getFormulaName()
     {
         return FORMULA_NAME;
+    }
+
+    @Override
+    public BasalMetabolicRate<KatchMcardleActivityLevel> calculateBasalMetabolicRate()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public double calculateTotalCalorieExpenditurePerDay(KatchMcardleActivityLevel activityLevel)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
