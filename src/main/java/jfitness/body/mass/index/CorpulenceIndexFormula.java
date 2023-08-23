@@ -11,7 +11,7 @@ public class CorpulenceIndexFormula implements BodyMassIndexFormula
 {
 
     @Override
-    public BodyMassIndex calculateBodyMassIndex(PersonFitnessData personFitnessData)
+    public BodyMassIndex calculateBodyMassIndex()
     {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

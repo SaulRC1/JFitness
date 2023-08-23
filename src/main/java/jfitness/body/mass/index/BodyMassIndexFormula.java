@@ -1,7 +1,6 @@
 package jfitness.body.mass.index;
 
 import jfitness.body.mass.index.category.BodyMassIndexCategoriser;
-import jfitness.person.fitness.data.PersonFitnessData;
 
 /**
  *
@@ -9,7 +8,7 @@ import jfitness.person.fitness.data.PersonFitnessData;
  */
 public interface BodyMassIndexFormula
 {
-    public BodyMassIndex calculateBodyMassIndex(PersonFitnessData personFitnessData);
+    public BodyMassIndex calculateBodyMassIndex();
     
     public String getFormulaName();
     

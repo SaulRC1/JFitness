@@ -60,17 +60,18 @@ package jfitness.body.mass.index.category;
  */
 public class BMIPrimeCategoriser implements BodyMassIndexCategoriser
 {
-
+    private final String CATEGORISER_NAME = "Body Mass Index Prime Categoriser";
+    
     @Override
     public String categoriseBodyMassIndex(double bodyMassIndexValue)
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     @Override
     public String getCategoriserName()
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return CATEGORISER_NAME;
     }
 
 }
