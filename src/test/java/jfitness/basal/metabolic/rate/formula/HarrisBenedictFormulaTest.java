@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import jfitness.basal.metabolic.rate.BasalMetabolicRate;
 import jfitness.basal.metabolic.rate.activity.level.HarrisBenedictActivityLevel;
 import jfitness.person.fitness.data.BiologicalSex;
-import jfitness.person.fitness.data.PersonFitnessData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

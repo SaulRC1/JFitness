@@ -44,8 +44,40 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
 
     private double personHeight;
 
+    /**
+     * Builds Trefethen body mass index formula with the body mass index
+     * categoriser and the person's weight and height provided.
+     *
+     * @param bodyMassIndexCategoriser The body mass index categoriser to be
+     * used.
+     * @param personWeight The person's weight to be used.
+     * @param personHeight The person's height to be used.
+     *
+     * @throws NullPointerException When the body mass index categoriser
+     * provided is null.
+     *
+     * @throws IncompatibleBodyMassIndexCategoriserException If the body mass
+     * index categoriser provided is not compatible with this formula.
+     */
     public TrefethenBMIFormula(BodyMassIndexCategoriser bodyMassIndexCategoriser, double personWeight, double personHeight)
     {
+        if (personWeight <= 0)
+        {
+            throw new IllegalArgumentException("The person's weight must be a "
+                    + "positive number greater than 0");
+        }
+        
+        if (personHeight <= 0)
+        {
+            throw new IllegalArgumentException("The person's height must be a "
+                    + "positive number greater than 0");
+        }
+
+        if (bodyMassIndexCategoriser == null)
+        {
+            throw new NullPointerException("bodyMassIndexCategoriser cannot be null.");
+        }
+
         if (this.isBodyMassIndexCategoriserCompatible(bodyMassIndexCategoriser))
         {
             this.bodyMassIndexCategoriser = bodyMassIndexCategoriser;
@@ -63,15 +95,15 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
     public BodyMassIndex calculateBodyMassIndex()
     {
         BodyMassIndex bodyMassIndex = new BodyMassIndex();
-        
+
         bodyMassIndex.setBodyMassIndexFormulaUsed(this.getFormulaName());
-        
+
         double bodyMassIndexValue = this.calculateBodyMassIndexValue();
-        
+
         bodyMassIndex.setBodyMassIndexValue(bodyMassIndexValue);
         bodyMassIndex.setBodyMassIndexCategoriserUsed(this.bodyMassIndexCategoriser.getCategoriserName());
         bodyMassIndex.setBodyMassIndexCategory(this.bodyMassIndexCategoriser.categoriseBodyMassIndex(bodyMassIndexValue));
-        
+
         return bodyMassIndex;
     }
 
@@ -97,6 +129,11 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
     @Override
     public void setBodyMassIndexCategoriser(BodyMassIndexCategoriser bodyMassIndexCategoriser)
     {
+        if (bodyMassIndexCategoriser == null)
+        {
+            throw new NullPointerException("bodyMassIndexCategoriser cannot be null.");
+        }
+
         if (this.isBodyMassIndexCategoriserCompatible(bodyMassIndexCategoriser))
         {
             this.bodyMassIndexCategoriser = bodyMassIndexCategoriser;
@@ -113,23 +150,55 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
         return true;
     }
 
+    /**
+     * Returns the person's weight that is currently used by this formula.
+     *
+     * @return The currently used person's weight.
+     */
     public double getPersonWeight()
     {
         return personWeight;
     }
 
+    /**
+     * Sets the person's weight to be used in this formula.
+     *
+     * @param personWeight The person's weight to be used in this formula.
+     */
     public void setPersonWeight(double personWeight)
     {
+        if (personWeight <= 0)
+        {
+            throw new IllegalArgumentException("The person's weight must be a "
+                    + "positive number greater than 0");
+        }
+        
         this.personWeight = personWeight;
     }
 
+    /**
+     * Returns the person's height that is currently used by this formula.
+     *
+     * @return The currently used person's height.
+     */
     public double getPersonHeight()
     {
         return personHeight;
     }
 
+    /**
+     * Sets the person's height to be used in this formula.
+     *
+     * @param personHeight The person's height to be used in this formula.
+     */
     public void setPersonHeight(double personHeight)
     {
+        if (personHeight <= 0)
+        {
+            throw new IllegalArgumentException("The person's height must be a "
+                    + "positive number greater than 0");
+        }
+        
         this.personHeight = personHeight;
     }
 }
