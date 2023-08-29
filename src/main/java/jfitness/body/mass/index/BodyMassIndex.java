@@ -6,6 +6,7 @@ package jfitness.body.mass.index;
  */
 public class BodyMassIndex
 {
+
     private double bodyMassIndexValue;
     private String bodyMassIndexCategory;
     private String bodyMassIndexFormulaUsed;
@@ -62,5 +63,11 @@ public class BodyMassIndex
     {
         this.bodyMassIndexCategoriserUsed = bodyMassIndexCategoriserUsed;
     }
-    
+
+    @Override
+    public String toString()
+    {
+        return "BodyMassIndex{" + "bodyMassIndexValue=" + bodyMassIndexValue + ", bodyMassIndexCategory=" + bodyMassIndexCategory + ", bodyMassIndexFormulaUsed=" + bodyMassIndexFormulaUsed + ", bodyMassIndexCategoriserUsed=" + bodyMassIndexCategoriserUsed + '}';
+    }
+
 }

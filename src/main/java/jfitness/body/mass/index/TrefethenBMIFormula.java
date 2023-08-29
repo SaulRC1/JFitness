@@ -1,6 +1,7 @@
 package jfitness.body.mass.index;
 
 import jfitness.body.mass.index.category.BodyMassIndexCategoriser;
+import jfitness.body.mass.index.category.WorldHealthOrganizationBMICategoriser;
 
 /**
  * New BMI (exponent of 2.5) formula proposed by Nick Trefethen, professor of
@@ -66,7 +67,7 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
             throw new IllegalArgumentException("The person's weight must be a "
                     + "positive number greater than 0");
         }
-        
+
         if (personHeight <= 0)
         {
             throw new IllegalArgumentException("The person's height must be a "
@@ -84,7 +85,9 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
         }
         else
         {
-            throw new IncompatibleBodyMassIndexCategoriserException();
+            throw new IncompatibleBodyMassIndexCategoriserException(
+                    bodyMassIndexCategoriser.getClass().getName() + " is not compatible with "
+                    + this.getClass().getName());
         }
 
         this.personWeight = personWeight;
@@ -109,7 +112,7 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
 
     public double calculateBodyMassIndexValue()
     {
-        double bodyMassIndexValue = 1.3 * (personWeight / Math.pow(personHeight, 2.5));
+        double bodyMassIndexValue = 1.3 * (personWeight / Math.pow((personHeight / 100), 2.5));
 
         return bodyMassIndexValue;
     }
@@ -147,13 +150,19 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
     @Override
     public boolean isBodyMassIndexCategoriserCompatible(BodyMassIndexCategoriser bodyMassIndexCategoriser)
     {
-        return true;
+        if (bodyMassIndexCategoriser instanceof WorldHealthOrganizationBMICategoriser)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /**
-     * Returns the person's weight that is currently used by this formula.
+     * Returns the person's weight expressed in kilograms that is currently used
+     * by this formula.
      *
-     * @return The currently used person's weight.
+     * @return The currently used person's weight in kilograms.
      */
     public double getPersonWeight()
     {
@@ -161,9 +170,11 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
     }
 
     /**
-     * Sets the person's weight to be used in this formula.
+     * Sets the person's weight to be used in this formula. Must be expressed in
+     * kilograms.
      *
-     * @param personWeight The person's weight to be used in this formula.
+     * @param personWeight The person's weight to be used in this formula in
+     * kilograms.
      */
     public void setPersonWeight(double personWeight)
     {
@@ -172,14 +183,15 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
             throw new IllegalArgumentException("The person's weight must be a "
                     + "positive number greater than 0");
         }
-        
+
         this.personWeight = personWeight;
     }
 
     /**
-     * Returns the person's height that is currently used by this formula.
+     * Returns the person's height expressed in centimeters that is currently
+     * used by this formula.
      *
-     * @return The currently used person's height.
+     * @return The currently used person's height in centimeters.
      */
     public double getPersonHeight()
     {
@@ -187,9 +199,11 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
     }
 
     /**
-     * Sets the person's height to be used in this formula.
+     * Sets the person's height to be used in this formula. Must be expressed in
+     * centimeters.
      *
-     * @param personHeight The person's height to be used in this formula.
+     * @param personHeight The person's height to be used in this formula
+     * expressed in centimeters.
      */
     public void setPersonHeight(double personHeight)
     {
@@ -198,7 +212,7 @@ public final class TrefethenBMIFormula implements BodyMassIndexFormula
             throw new IllegalArgumentException("The person's height must be a "
                     + "positive number greater than 0");
         }
-        
+
         this.personHeight = personHeight;
     }
 }

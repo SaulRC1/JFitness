@@ -6,5 +6,12 @@ package jfitness.body.mass.index;
  */
 public class IncompatibleBodyMassIndexCategoriserException extends RuntimeException 
 {
-    
+    public IncompatibleBodyMassIndexCategoriserException(String string)
+    {
+        super(string);
+    }
+
+    public IncompatibleBodyMassIndexCategoriserException()
+    {
+    }
 }
