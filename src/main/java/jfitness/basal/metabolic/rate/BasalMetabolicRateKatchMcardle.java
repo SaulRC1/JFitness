@@ -22,5 +22,10 @@ public class BasalMetabolicRateKatchMcardle implements BasalMetabolicRate<KatchM
     {
         return basalMetabolicRateValue;
     }
+    
+    public String newMethod() 
+    {
+        return "";
+    }
 
 }
